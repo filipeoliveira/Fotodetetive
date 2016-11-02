@@ -2,16 +2,22 @@
 using System.Collections;
 
 public class Move : MonoBehaviour {
-	
-	public float speed;
+
+	private Vector3 targetPos;
+
 	void Start(){
 		Cursor.visible = false;
+		targetPos = transform.position;   
 	}
 	void Update () {
 		Moving ();
 	}
 
 	void Moving(){
-		transform.position += new Vector3 (Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"),0)*speed;
+		float distance = transform.position.z - Camera.main.transform.position.z;
+		targetPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
+		targetPos = Camera.main.ScreenToWorldPoint(targetPos);
+
+		transform.position = Vector3.Lerp(transform.position, targetPos, 1);
 	}
 }
