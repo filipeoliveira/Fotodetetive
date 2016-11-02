@@ -3,13 +3,9 @@ using System.Collections;
 
 public class Photograph : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	void OnTriggerStay2D(Collider2D other){
+		if (other.gameObject.tag == "Object" && Input.GetMouseButtonDown(0)) {
+			other.gameObject.GetComponent<SpriteRenderer> ().enabled = true;
+		}
 	}
 }
