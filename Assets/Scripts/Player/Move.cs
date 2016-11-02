@@ -4,7 +4,9 @@ using System.Collections;
 public class Move : MonoBehaviour {
 	
 	public float speed;
-
+	void Start(){
+		Cursor.visible = false;
+	}
 	void Update () {
 		Moving ();
 	}
