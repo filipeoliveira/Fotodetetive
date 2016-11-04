@@ -4,9 +4,10 @@ using System.Collections;
 public class Move : MonoBehaviour {
 
 	private Vector3 targetPos;
+	public bool CursorVisivel = false;
 
 	void Start(){
-		Cursor.visible = false;
+		Cursor.visible = CursorVisivel;
 		targetPos = transform.position;   
 	}
 	void Update () {
