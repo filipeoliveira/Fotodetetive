@@ -7,6 +7,7 @@ public class Objeto : MonoBehaviour {
 	public bool countdown = false;
 	float timeLeft = 3.0f;
 	public Sprite ani;
+	public bool descoberto = false;
 
 	void Update(){
 		if (countdown) {

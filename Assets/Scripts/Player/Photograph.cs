@@ -4,26 +4,17 @@ using System.Collections;
 public class Photograph : MonoBehaviour {
 
 	GameObject animacao;
-	bool TirarFoto = false,Carregando = false;
-	//public float zoomSpeed = 2;
+	bool TirarFoto = false;//Carregando = false;
 
 	void Update(){
-		if (Input.GetMouseButtonUp(0)) {
-			TirarFoto = false;
-			Carregando = false;
-		}
-		if (Input.GetMouseButtonDown (0)) {
-			TirarFoto = true;
-			Carregando = true;
-		}
-		//AnimacaoDiafragmaCamera ();
-
+		GetInput ();
 	}
 
 	void OnTriggerStay2D(Collider2D other){
 		int indice = 0;
 		if (other.gameObject.tag == "Object" && TirarFoto ) {
 			TirarFoto = false;
+			other.gameObject.GetComponent<Objeto> ().descoberto = true;
 			ObjetoIndoParaGaleria (other);
 			indice = other.gameObject.GetComponent<Objeto> ().indice;
 			GameObject.FindGameObjectWithTag ("TextManager").GetComponent<TextBoxManager> ().currentLine = indice;
@@ -39,20 +30,12 @@ public class Photograph : MonoBehaviour {
 		animacao.gameObject.GetComponent<FadeObjectInOut> ().FadeIn (4f);
 	}
 
-	/*
-	void AnimacaoDiafragmaCamera(){
-		if (Carregando && GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ().orthographicSize >= 2f) {
-			GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ().orthographicSize -= zoomSpeed * Time.deltaTime;
-
-		} else if (!Carregando) {
-			if(GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ().orthographicSize < 2.95f){
-				GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ().orthographicSize += zoomSpeed*4* Time.deltaTime;
-			}
-			if (GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ().orthographicSize > 2.95f) {
-				GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ().orthographicSize = 2.95f;
-			}
+	void GetInput(){
+		if (Input.GetMouseButtonUp(0)) {
+			TirarFoto = false;
+		}
+		if (Input.GetMouseButtonDown (0)) {
+			TirarFoto = true;
 		}
 	}
-	*/
-
 }
