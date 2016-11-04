@@ -4,10 +4,12 @@ using System.Collections;
 public class Photograph : MonoBehaviour {
 
 	GameObject animacao;
-	bool TirarFoto = false;//Carregando = false;
+	bool TirarFoto = false;
+	public float ZoomSpeed = 5; 
 
 	void Update(){
 		GetInput ();
+		PreparacaoFoto ();
 	}
 
 	void OnTriggerStay2D(Collider2D other){
@@ -30,11 +32,25 @@ public class Photograph : MonoBehaviour {
 		animacao.gameObject.GetComponent<FadeObjectInOut> ().FadeIn (4f);
 	}
 
+	void PreparacaoFoto(){
+		if (Input.GetMouseButton(0) && transform.localScale.x > 0.9f) {
+			transform.localScale -= new Vector3(ZoomSpeed,ZoomSpeed,1) * Time.deltaTime;
+		} 
+		if (!Input.GetMouseButton(0) && transform.localScale.x < 1f) {
+			transform.localScale += new Vector3(ZoomSpeed/2,ZoomSpeed/2,1) * Time.deltaTime;
+		}
+		
+		if (!TirarFoto && transform.localScale.x > 1f) {
+			transform.localScale = new Vector3(1,1,1);
+		}
+
+	}
+
 	void GetInput(){
-		if (Input.GetMouseButtonUp(0)) {
+		if (!Input.GetMouseButton(0)) {
 			TirarFoto = false;
 		}
-		if (Input.GetMouseButtonDown (0)) {
+		if (Input.GetMouseButtonUp (0)) {
 			TirarFoto = true;
 		}
 	}

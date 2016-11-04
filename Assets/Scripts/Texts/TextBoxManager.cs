@@ -12,7 +12,7 @@ public class TextBoxManager : MonoBehaviour {
 	public string[] textLines;
 
 	public int currentLine;
-	public int endAtLine;
+	public bool ativado = false;
 
 	private double tempoDiminuindo = 0;
 	public int tempoLimiteTexto = 5;
@@ -27,16 +27,28 @@ public class TextBoxManager : MonoBehaviour {
 
 	void Update () {
 		SumirTexto ();
+		TextBoxActive ();
+
 		theText.text = textLines [currentLine];
 	}
 
 	void SumirTexto(){
 		if (currentLine != 0) {
 			tempoDiminuindo += Time.deltaTime;
+			ativado = true;
 		}
 		if (tempoDiminuindo >= tempoLimiteTexto && currentLine !=0) {
 			currentLine = 0;
+			ativado = false;
 			tempoDiminuindo = 0;
+		}
+	}
+
+	void TextBoxActive(){
+		if (ativado) {
+			transform.GetChild (0).gameObject.SetActive(true);
+		} else {
+			transform.GetChild (0).gameObject.SetActive(false);
 		}
 	}
 }
