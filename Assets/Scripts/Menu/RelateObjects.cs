@@ -7,8 +7,17 @@ public class RelateObjects : MonoBehaviour {
 
 	void Update(){
 		StillSelected();
-	}
 
+		switch (CanRelateTo ()) {
+		case "frame":
+			GameObject.Find ("Canvas").transform.FindChild ("Relacionar").gameObject.SetActive (true);
+			break;
+		case "none":
+			GameObject.Find ("Canvas").transform.FindChild ("Relacionar").gameObject.SetActive (false);
+			break;
+		}
+	}
+		
 	public void AddToSelectList(GameObject frame){
 		if (vetorSelecionados [0] == null) {
 			vetorSelecionados [0] = frame;
@@ -28,6 +37,9 @@ public class RelateObjects : MonoBehaviour {
 	}
 
 	public string CanRelateTo(){
+		if (vetorSelecionados [0] == null || vetorSelecionados [1] == null) {
+			return "none";
+		}
 		if (vetorSelecionados.Length == 2) {
 			if (vetorSelecionados [0].CompareTag ("Testemunha") || vetorSelecionados [1].CompareTag ("Testemunha")) {
 				return "testemunha";
@@ -38,4 +50,5 @@ public class RelateObjects : MonoBehaviour {
 			return "none";
 		}
 	}
+		
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Frame : MonoBehaviour {
+public class Testemunhas : MonoBehaviour{
 
 	public int indice;
 	public bool isSelected;
@@ -10,7 +10,8 @@ public class Frame : MonoBehaviour {
 	void Start(){
 		cor = transform.gameObject.GetComponent<SpriteRenderer> ().color;
 	}
-	void Update(){
+
+	void Update () {
 		ShineOnSelection ();
 	}
 
@@ -23,7 +24,7 @@ public class Frame : MonoBehaviour {
 	void AddList(){
 		isSelected = !isSelected;
 		if (isSelected) {
-			transform.parent.gameObject.GetComponent<RelateObjects> ().AddToSelectList (this.transform.gameObject);
+			transform.parent.gameObject.transform.parent.GetComponent<RelateObjects> ().AddToSelectList (this.transform.gameObject);
 		}
 	}
 
