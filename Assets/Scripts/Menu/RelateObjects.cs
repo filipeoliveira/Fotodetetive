@@ -26,4 +26,16 @@ public class RelateObjects : MonoBehaviour {
 			}
 		}
 	}
+
+	public string CanRelateTo(){
+		if (vetorSelecionados.Length == 2) {
+			if (vetorSelecionados [0].CompareTag ("Testemunha") || vetorSelecionados [1].CompareTag ("Testemunha")) {
+				return "testemunha";
+			} else {
+				return "frame";
+			}
+		} else {
+			return "none";
+		}
+	}
 }
