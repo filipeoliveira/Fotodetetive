@@ -6,9 +6,7 @@ public class RelateObjects : MonoBehaviour {
 	public GameObject[] vetorSelecionados = new GameObject[2];
 
 	void Update(){
-		//Conserta casos errados:
 		StillSelected();
-		//isEqual();
 	}
 
 	public void AddToSelectList(GameObject frame){
@@ -26,11 +24,6 @@ public class RelateObjects : MonoBehaviour {
 			if (vetorSelecionados[i] != null && !vetorSelecionados[i].GetComponent<Frame> ().isSelected) {
 				vetorSelecionados[i] = null;
 			}
-		}
-	}
-	void isEqual(){
-		if (vetorSelecionados[0] != null && vetorSelecionados [0] == vetorSelecionados [1]) {
-			vetorSelecionados [1] = null;
 		}
 	}
 }
