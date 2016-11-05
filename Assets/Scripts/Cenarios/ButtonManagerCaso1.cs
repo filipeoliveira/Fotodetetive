@@ -14,17 +14,7 @@ public class ButtonManagerCaso1 : MonoBehaviour {
 	}
 
 	void TaskOnClick(){
-		Fundo.GetComponent<SpriteRenderer> ().enabled = !(Fundo.GetComponent<SpriteRenderer> ().enabled);
-		int i = -2;
-		foreach(Transform t in Fundo.GetComponentsInChildren<Transform>()){
-			i++;
-			Debug.Log (i);
-			if(i != -1){
-				if(Fundo.GetComponent<FrameManager>().frames[i]){
-					t.gameObject.GetComponent<SpriteRenderer> ().enabled = !(t.gameObject.GetComponent<SpriteRenderer> ().enabled);
-				}
-			}
-		}
+		Fundo.gameObject.SetActive(!Fundo.gameObject.activeSelf);
 	}
 	// Update is called once per frame
 	void Update () {
