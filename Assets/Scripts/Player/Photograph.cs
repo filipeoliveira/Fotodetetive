@@ -3,9 +3,14 @@ using System.Collections;
 
 public class Photograph : MonoBehaviour {
 
-	GameObject animacao;
+	GameObject animacao, inv;
+	public GameObject framemanager;
 	bool TirarFoto = false;
 	public float ZoomSpeed = 5; 
+	Vector3 pos;
+
+	void Start(){
+	}
 
 	void Update(){
 		GetInput ();
@@ -19,6 +24,7 @@ public class Photograph : MonoBehaviour {
 			other.gameObject.GetComponent<Objeto> ().descoberto = true;
 			ObjetoIndoParaGaleria (other);
 			indice = other.gameObject.GetComponent<Objeto> ().indice;
+			framemanager.GetComponent<FrameManager> ().MarkFrame (indice - 1);
 			GameObject.FindGameObjectWithTag ("TextManager").GetComponent<TextBoxManager> ().currentLine = indice;
 		}
 	}
