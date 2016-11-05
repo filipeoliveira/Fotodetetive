@@ -2,37 +2,19 @@
 using System.Collections;
 
 public class Testemunhas : MonoBehaviour{
-
+	
 	public int indice;
-	public bool isSelected;
-	public Color cor;
-
-	void Start(){
-		cor = transform.gameObject.GetComponent<SpriteRenderer> ().color;
-	}
-
-	void Update () {
-		ShineOnSelection ();
-	}
 
 	void OnTriggerStay2D(Collider2D other){
-		if (Input.GetMouseButtonUp (0)) {
-			AddList ();
+		if (other.CompareTag ("Cursor") && Input.GetMouseButtonDown (0)) {
+			transform.gameObject.GetComponent<Selectable> ().Select ();
+
+			transform.parent.gameObject.transform.parent.GetComponent<RelationManager> ().UpdateSelecionados();
+
+			if (transform.gameObject.GetComponent<Selectable> ().isSelected) {
+				transform.parent.gameObject.transform.parent.GetComponent<RelationManager> ().AddOnSelecionados (this.transform.gameObject);
+			}
 		}
 	}
 
-	void AddList(){
-		isSelected = !isSelected;
-		if (isSelected) {
-			transform.parent.gameObject.transform.parent.GetComponent<RelateObjects> ().AddToSelectList (this.transform.gameObject);
-		}
-	}
-
-	void ShineOnSelection(){
-		if (isSelected) {
-			transform.gameObject.GetComponent<SpriteRenderer> ().color = new Color (0.5f, 0.7f, 0.5f, 1f);
-		} else {
-			transform.gameObject.GetComponent<SpriteRenderer> ().color = cor;
-		}
-	}
 }
