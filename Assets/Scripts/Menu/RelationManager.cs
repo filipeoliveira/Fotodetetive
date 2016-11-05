@@ -4,9 +4,12 @@ using System.Collections;
 public class RelationManager : MonoBehaviour {
 	
 	public GameObject[] Selecionados = new GameObject[2];
+	public GameObject relacaoFrames;
+	//public GameObject relacaoFrameTestemunha;
 
 	void Update(){
 		ShineSelecionados ();
+		BotaoRelacionarFrames ();
 	}
 
 	public void AddOnSelecionados(GameObject objeto){
@@ -51,6 +54,16 @@ public class RelationManager : MonoBehaviour {
 		vetor [0] = vetor [1];
 		vetor [1] = temp;
 		return vetor;
+	}
+
+	public void BotaoRelacionarFrames(){
+		relacaoFrames.SetActive (false);
+		if (Selecionados [0] == null || Selecionados [1] == null) {
+			return;
+		}
+		if (Selecionados [0].CompareTag ("Frame") && Selecionados [1].CompareTag ("Frame")) {
+			relacaoFrames.SetActive (true);
+		}
 	}
 
 
