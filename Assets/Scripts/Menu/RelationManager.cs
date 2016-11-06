@@ -6,6 +6,7 @@ public class RelationManager : MonoBehaviour {
 	public GameObject[] Selecionados = new GameObject[2];
 	public GameObject relacaoFrames;
 	public GameObject relacaoFrameTestemunha;
+	public GameObject counter;
 
 	void Awake(){
 		Selecionados [0] = Selecionados [1] = null;

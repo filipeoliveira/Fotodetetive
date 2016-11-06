@@ -11,6 +11,7 @@ public class Objeto : MonoBehaviour {
 	public float ZoomSpeed = 4;
 	public Vector3 tamanho;
 	private bool clique;
+	public int score;
 
 	void Start(){
 		tamanho = transform.localScale;

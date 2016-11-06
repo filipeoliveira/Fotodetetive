@@ -4,6 +4,7 @@ using System.Collections;
 public class Frame : MonoBehaviour {
 
 	public int indice;
+	public int score;
 
 	void OnMouseDown(){
 		transform.gameObject.GetComponent<Selectable> ().Select ();

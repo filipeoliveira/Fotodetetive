@@ -11,6 +11,7 @@ public class Photograph : MonoBehaviour
     public AudioClip shooting;
     public float blinkSpeed = 30f;
     public Color flashColour = new Color(0f, 0f, 0f, 0.1f);
+	public GameObject counter;
 
     AudioSource playerAudio;
     private bool isBatteryOver;//A bateria acabou?
@@ -54,6 +55,7 @@ public class Photograph : MonoBehaviour
 			other.gameObject.GetComponent<Objeto> ().descoberto = true;
 			ObjetoIndoParaGaleria (other);
 			indice = other.gameObject.GetComponent<Objeto> ().indice;
+			counter.GetComponent<Score> ().addScore (other.GetComponent<Objeto> ().score);
 			GameObject.FindGameObjectWithTag ("TextManager").GetComponent<TextBoxManager> ().currentLine = indice;
 		}
 	}
