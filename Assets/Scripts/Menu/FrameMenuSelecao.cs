@@ -6,9 +6,8 @@ public class FrameMenuSelecao : MonoBehaviour {
 	
 	public string NomeCena;
 
-	void OnTriggerStay2D(Collider2D other){
-		if (Input.GetMouseButtonDown (0)) {
-			SceneManager.LoadScene (NomeCena);
-		}
+	void OnMouseDown(){
+		Debug.Log ("oi");
+		SceneManager.LoadScene (NomeCena);
 	}
 }

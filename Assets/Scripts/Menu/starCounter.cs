@@ -19,7 +19,7 @@ public class starCounter : MonoBehaviour {
 	public void getStars(){
 		if (score >= 2000) {
 //			textManager.GetComponent<TextBoxManager>().newTxt(false, 0);
-			text1.SetActive(true);
+			text3.SetActive(true);
 		} else if (score >= 1500) {
 //			textManager.GetComponent<TextBoxManager>().newTxt(false, 0);
 //			textManager.GetComponent<TextBoxManager>().newTxt(false, 1);
@@ -28,7 +28,7 @@ public class starCounter : MonoBehaviour {
 //    		textManager.GetComponent<TextBoxManager>().newTxt(false, 0);
 //			textManager.GetComponent<TextBoxManager>().newTxt(false, 1);
 //			textManager.GetComponent<TextBoxManager>().newTxt(false, 2);
-			text3.SetActive(true);
+			text1.SetActive(true);
 		} else {
 			text4.SetActive(true);
 		}
