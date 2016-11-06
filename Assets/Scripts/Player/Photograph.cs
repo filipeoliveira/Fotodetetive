@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Photograph : MonoBehaviour
 {
-    public int startingBattery = 100;
+    private int startingBattery = 100;
     public int currentBattery;
     public Slider batterySlider;
     public Image blinkImage;
@@ -13,9 +13,9 @@ public class Photograph : MonoBehaviour
     public Color flashColour = new Color(0f, 0f, 0f, 0.1f);
 
     AudioSource playerAudio;
-    bool isBatteryOver;//A bateria acabou?
-    bool camShot;//O botão da camera foi pressionado?
-    int amount = 10;
+    private bool isBatteryOver;//A bateria acabou?
+    private bool camShot;//O botão da camera foi pressionado?
+    public int amount = 5;
 
     GameObject animacao, inv;
 	public GameObject framemanager;

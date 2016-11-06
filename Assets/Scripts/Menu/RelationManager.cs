@@ -7,6 +7,10 @@ public class RelationManager : MonoBehaviour {
 	public GameObject relacaoFrames;
 	//public GameObject relacaoFrameTestemunha;
 
+	void Awake(){
+		Selecionados [0] = Selecionados [1] = null;
+	}
+
 	void Update(){
 		ShineSelecionados ();
 		BotaoRelacionarFrames ();
@@ -63,6 +67,13 @@ public class RelationManager : MonoBehaviour {
 		}
 		if (Selecionados [0].CompareTag ("Frame") && Selecionados [1].CompareTag ("Frame")) {
 			relacaoFrames.SetActive (true);
+		}
+	}
+
+	public void SetNullToAll(){
+		for (int i = 0; i < 2; i++) {
+			VoltaCor (Selecionados [i]);
+			Selecionados [i] = null;
 		}
 	}
 }

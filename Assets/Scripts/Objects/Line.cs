@@ -6,6 +6,7 @@ public class Line : MonoBehaviour {
 	public Transform start;
 	public Transform target;
 	public GameObject bm;
+	public int indice = 2;
 
 	LineRenderer line;
 	CapsuleCollider capsule;
@@ -33,6 +34,6 @@ public class Line : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
-		Debug.Log ("relacao");
+		GameObject.FindGameObjectWithTag ("TextManager").GetComponent<TextBoxManager> ().newTxt (true, indice);
 	}
 }

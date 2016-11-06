@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ButtonManagerCaso1 : MonoBehaviour {
 
@@ -26,9 +27,15 @@ public class ButtonManagerCaso1 : MonoBehaviour {
 
 		pos1 = frames [0].transform.position;
 		pos2 = frames [1].transform.position;
-		Instantiate (line);
+
+		//Instancia como filha de menuInvestigtivo, logo, só aparecerá quando este menu estiver ativo ~~Pedro
+		GameObject linha = Instantiate (line).gameObject;
+		linha.transform.parent = GameObject.Find ("menuInvestigativo").transform;
+
 		line.gameObject.GetComponent<Line> ().start = frames[0].transform;
 		line.gameObject.GetComponent<Line> ().target = frames[1].transform;
+
+		relationManager.GetComponent<RelationManager> ().SetNullToAll ();
 	}
 	// Update is called once per frame
 	void Update () { 

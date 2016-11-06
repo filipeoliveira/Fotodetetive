@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Selectable : MonoBehaviour {
 
-	public bool isSelected;
+	public bool isSelected = false;
 
 	public void Select(){
 		isSelected = !isSelected;

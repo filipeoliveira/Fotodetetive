@@ -37,7 +37,7 @@ public class Objeto : MonoBehaviour {
 
 	void OnMouseDown(){
 		if (descoberto) {
-			GameObject.FindGameObjectWithTag ("TextManager").GetComponent<TextBoxManager> ().currentLine = indice;
+			GameObject.FindGameObjectWithTag ("TextManager").GetComponent<TextBoxManager> ().newTxt (false, indice);
 		} 
 		clique = true;
 	}
