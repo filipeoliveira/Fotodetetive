@@ -6,6 +6,7 @@ public class Line : MonoBehaviour {
 	public Transform start;
 	public Transform target;
 	public GameObject bm;
+
 	public int indiceFinal;
 
 	LineRenderer line;
@@ -13,6 +14,9 @@ public class Line : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+
+
 		line = gameObject.GetComponent<LineRenderer>();
 		capsule = gameObject.AddComponent<CapsuleCollider> () as CapsuleCollider;
 		capsule.radius = 0.05f;
@@ -27,6 +31,9 @@ public class Line : MonoBehaviour {
 		indiceFinal = (DetermineMenor(indiceStart,indiceTarget))*10 + DetermineMaior(indiceStart,indiceTarget) + 1;
 
 		ShowText ();
+
+		//PONTOS:
+		GameObject.Find ("ScoreCounter").GetComponent<Score>().addScore(indiceFinal);
 	}
 	
 	// Update is called once per frame
@@ -44,20 +51,15 @@ public class Line : MonoBehaviour {
 	}
 
 	int DetermineMenor(int a, int b){
-		if (a > b) {
-			return b;
-		} else {
-			return a;
-		}
+		if (a > b) {return b;} 
+		else {return a;}
 	}
 
 	int DetermineMaior(int a, int b){
-		if (a > b) {
-			return a;
-		} else {
-			return b;
-		}
+		if (a > b) {return a;} 
+		else {return b;}
 	}
+
 	void ShowText(){
 		GameObject.FindGameObjectWithTag ("TextManager").GetComponent<TextBoxManager> ().newTxt (true, indiceFinal,false);
 	}

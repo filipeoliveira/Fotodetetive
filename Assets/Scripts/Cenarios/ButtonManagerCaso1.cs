@@ -8,7 +8,7 @@ public class ButtonManagerCaso1 : MonoBehaviour {
 	public Button yourButton;
 	public Button Testemunhas;
 
-	public GameObject relationManager, counter;
+	public GameObject relationManager;
 	public GameObject[] frames = new GameObject[2];
 	public GameObject[] testemunhas = new GameObject[2];
 	Vector3 pos1, pos2;
@@ -40,10 +40,6 @@ public class ButtonManagerCaso1 : MonoBehaviour {
 
 		line.gameObject.GetComponent<Line> ().start = frames[0].transform;
 		line.gameObject.GetComponent<Line> ().target = frames[1].transform;
-
-		// essa é a função para adicionar pontos.
-		// coloque onde for conveniente
-		counter.GetComponent<Score> ().addScore (100);
 
 		relationManager.GetComponent<RelationManager> ().SetNullToAll ();
 	}

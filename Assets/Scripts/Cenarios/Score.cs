@@ -3,24 +3,24 @@ using System.Collections;
 
 public class Score : MonoBehaviour {
 
-	public int score;
+	public int score = 0;
+
+	public TextAsset textFile;
+	public string[] textLines;
 
 	void Awake() {
 		DontDestroyOnLoad(transform.gameObject);
+		initText();
 	}
 
-	// Use this for initialization
-	void Start () {
-		score = 0;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-	public void addScore(int s){
-		score += s;
+	public void addScore(int linha){
+		score += int.Parse(textLines[linha])*50;
 		Debug.Log (score);
+	}
+
+	void initText(){
+		if(textFile != null){
+			textLines = (textFile.text.Split ('\n'));
+		}
 	}
 }

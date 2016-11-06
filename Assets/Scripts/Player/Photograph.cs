@@ -24,10 +24,6 @@ public class Photograph : MonoBehaviour
 	public float ZoomSpeed = 5; 
 	Vector3 pos;
 
-	void Start()
-    {
-
-	}
 
     void Awake()
     {
@@ -54,9 +50,9 @@ public class Photograph : MonoBehaviour
 			TirarFoto = false;
 			other.gameObject.GetComponent<Objeto> ().descoberto = true;
 			ObjetoIndoParaGaleria (other);
-			indice = other.gameObject.GetComponent<Objeto> ().indice;
-			counter.GetComponent<Score> ().addScore (other.GetComponent<Objeto> ().score);
-			GameObject.FindGameObjectWithTag ("TextManager").GetComponent<TextBoxManager> ().currentLine = indice;
+			indice = other.gameObject.GetComponent<Objeto> ().indiceTexto;
+			counter.GetComponent<Score> ().addScore (other.GetComponent<Objeto> ().indiceTexto);//
+			GameObject.FindGameObjectWithTag ("TextManager").GetComponent<TextBoxManager> ().newTxt (true, indice,false);;
 		}
 	}
 

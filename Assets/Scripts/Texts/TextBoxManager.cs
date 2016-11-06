@@ -22,13 +22,13 @@ public class TextBoxManager : MonoBehaviour {
 	}
 
 	void Update () {
-		Debug.Log (currentLine);
 		TextBoxActive ();
 		currentLine = SumirTexto (currentLine);
 		textMI.text = textLines [currentLine];
 	}
 
 	int SumirTexto(int line){
+		
 		if (line != 0) {
 			tempoDiminuindo += Time.deltaTime;
 			ativado = true;
@@ -56,7 +56,6 @@ public class TextBoxManager : MonoBehaviour {
 	}
 
 	public void newTxt(bool ehDoMenuInvestigativo, int indice, bool Testemunha){
-		int PulaLinha = 0;
 
 		if (Testemunha && ehDoMenuInvestigativo) {
 			currentLine = 101 + indice;
@@ -64,9 +63,9 @@ public class TextBoxManager : MonoBehaviour {
 		else if (ehDoMenuInvestigativo && !Testemunha) {
 			currentLine = indice;
 		} else {
-			currentLine = (indice-1)*indice;
+			currentLine = indice;
 		}
-	
+		tempoDiminuindo = 0;
 	}
 		
 }

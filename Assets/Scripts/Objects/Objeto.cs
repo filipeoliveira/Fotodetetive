@@ -4,6 +4,8 @@ using System.Collections;
 public class Objeto : MonoBehaviour {
 
 	public int indice;
+	public int indiceTexto;
+
 	public bool countdown = false;
 	float timeLeft = 3.0f;
 	public Sprite ani;
@@ -15,6 +17,7 @@ public class Objeto : MonoBehaviour {
 
 	void Start(){
 		tamanho = transform.localScale;
+		indiceTexto = (indice-1)*10 + indice;
 	}
 
 	void Update(){
@@ -38,7 +41,7 @@ public class Objeto : MonoBehaviour {
 
 	void OnMouseDown(){
 		if (descoberto) {
-			GameObject.FindGameObjectWithTag ("TextManager").GetComponent<TextBoxManager> ().newTxt (false, indice,false);
+			GameObject.FindGameObjectWithTag ("TextManager").GetComponent<TextBoxManager> ().newTxt (false, indiceTexto,false);
 		} 
 		clique = true;
 	}
