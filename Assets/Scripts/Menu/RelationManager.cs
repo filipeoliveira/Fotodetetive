@@ -5,7 +5,7 @@ public class RelationManager : MonoBehaviour {
 	
 	public GameObject[] Selecionados = new GameObject[2];
 	public GameObject relacaoFrames;
-	//public GameObject relacaoFrameTestemunha;
+	public GameObject relacaoFrameTestemunha;
 
 	void Awake(){
 		Selecionados [0] = Selecionados [1] = null;
@@ -69,11 +69,15 @@ public class RelationManager : MonoBehaviour {
 
 	public void BotaoRelacionarFrames(){
 		relacaoFrames.SetActive (false);
+		relacaoFrameTestemunha.SetActive (false);
 		if (Selecionados [0] == null || Selecionados [1] == null) {
 			return;
 		}
 		if (Selecionados [0].CompareTag ("Frame") && Selecionados [1].CompareTag ("Frame")) {
 			relacaoFrames.SetActive (true);
+		}
+		if (Selecionados [0].CompareTag ("Testemunha") || Selecionados [1].CompareTag ("Testemunha")) {
+			relacaoFrameTestemunha.SetActive (true);
 		}
 	}
 

@@ -6,14 +6,13 @@ public class TextBoxManager : MonoBehaviour {
 
 	public GameObject textBox;
 
-	public Text theText;//telaNormal
-	public Text textMI;//menuInvestigacao
+	public Text textMI;
 
-	public TextAsset textFile, textFile2;
-	public string[] textLines, textLines2;
+	public TextAsset textFile;
+	public string[] textLines;
 
-	public int currentLine, currentLine2;
-	public bool ativado1 = false;
+	public int currentLine = 0;
+	public bool ativado = false;
 
 	private double tempoDiminuindo = 0;
 	public int tempoLimiteTexto = 5;
@@ -23,33 +22,27 @@ public class TextBoxManager : MonoBehaviour {
 	}
 
 	void Update () {
-		
-
-
+		Debug.Log (currentLine);
 		TextBoxActive ();
-
-		theText.text = textLines [currentLine];
-		textMI.text = textLines2 [currentLine2];
-
 		currentLine = SumirTexto (currentLine);
-		currentLine2 = SumirTexto (currentLine2);
+		textMI.text = textLines [currentLine];
 	}
 
 	int SumirTexto(int line){
 		if (line != 0) {
 			tempoDiminuindo += Time.deltaTime;
-			ativado1 = true;
+			ativado = true;
 		}
 		if (tempoDiminuindo >= tempoLimiteTexto && line !=0) {
 			line = 0;
-			ativado1 = false;
+			ativado = false;
 			tempoDiminuindo = 0;
 		}
 		return line;
 	}
 
 	void TextBoxActive(){
-		if (ativado1) {
+		if (ativado) {
 			transform.GetChild (0).gameObject.SetActive(true);
 		} else {
 			transform.GetChild (0).gameObject.SetActive(false);
@@ -60,18 +53,18 @@ public class TextBoxManager : MonoBehaviour {
 		if(textFile != null){
 			textLines = (textFile.text.Split ('\n'));
 		}
-		if(textFile2 != null){
-			textLines2 = (textFile2.text.Split ('\n'));
-		}
 	}
 
-	public void newTxt(bool ehDoMenuInvestigativo, int indice){
-		if (ehDoMenuInvestigativo) {
-			currentLine = 0;
-			currentLine2 = indice;
-		} else {
+	public void newTxt(bool ehDoMenuInvestigativo, int indice, bool Testemunha){
+		int PulaLinha = 0;
+
+		if (Testemunha && ehDoMenuInvestigativo) {
+			currentLine = 101 + indice;
+		}
+		else if (ehDoMenuInvestigativo && !Testemunha) {
 			currentLine = indice;
-			currentLine2 = 0;
+		} else {
+			currentLine = (indice-1)*indice;
 		}
 	
 	}

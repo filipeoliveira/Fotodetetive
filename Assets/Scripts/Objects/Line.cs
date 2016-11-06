@@ -59,6 +59,6 @@ public class Line : MonoBehaviour {
 		}
 	}
 	void ShowText(){
-		GameObject.FindGameObjectWithTag ("TextManager").GetComponent<TextBoxManager> ().newTxt (true, indiceFinal);
+		GameObject.FindGameObjectWithTag ("TextManager").GetComponent<TextBoxManager> ().newTxt (true, indiceFinal,false);
 	}
 }
