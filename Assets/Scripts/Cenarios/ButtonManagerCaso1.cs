@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,6 +8,7 @@ public class ButtonManagerCaso1 : MonoBehaviour {
 
 	public Button yourButton;
 	public Button Testemunhas;
+	public Button concluir;
 
 	public GameObject relationManager;
 	public GameObject[] frames = new GameObject[2];
@@ -22,6 +24,13 @@ public class ButtonManagerCaso1 : MonoBehaviour {
 
 		Button btn2 = Testemunhas.GetComponent<Button> ();
 		btn2.onClick.AddListener (TestemunhaTask);
+
+		Button btn3 = concluir.GetComponent<Button> ();
+		btn3.onClick.AddListener (Concluir);
+	}
+
+	void Concluir(){
+		SceneManager.LoadScene ("historiaConclusao");
 	}
 
 	void TaskOnClick(){

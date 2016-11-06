@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -46,7 +47,7 @@ public class Photograph : MonoBehaviour
 
 	void OnTriggerStay2D(Collider2D other){
 		int indice = 0;
-		if (other.gameObject.tag == "Object" && TirarFoto ) {
+		if (other.gameObject.tag == "Object" && TirarFoto && !(other.gameObject.GetComponent<Objeto>().descoberto)) {
 			TirarFoto = false;
 			other.gameObject.GetComponent<Objeto> ().descoberto = true;
 			ObjetoIndoParaGaleria (other);
@@ -103,6 +104,7 @@ public class Photograph : MonoBehaviour
 
     void NoBattery()
     {
-        isBatteryOver = true;
+		counter.GetComponent<Score> ().score = 0;
+		SceneManager.LoadScene ("gameOver");
     }
 }
