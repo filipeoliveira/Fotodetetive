@@ -1,19 +1,49 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
-public class Photograph : MonoBehaviour {
+public class Photograph : MonoBehaviour
+{
+    public int startingBattery = 100;
+    public int currentBattery;
+    public Slider batterySlider;
+    public Image blinkImage;
+    public AudioClip shooting;
+    public float blinkSpeed = 30f;
+    public Color flashColour = new Color(0f, 0f, 0f, 0.1f);
 
-	GameObject animacao, inv;
+    AudioSource playerAudio;
+    bool isBatteryOver;//A bateria acabou?
+    bool camShot;//O botão da camera foi pressionado?
+    int amount = 10;
+
+    GameObject animacao, inv;
 	public GameObject framemanager;
 	bool TirarFoto = false;
 	public float ZoomSpeed = 5; 
 	Vector3 pos;
 
-	void Start(){
+	void Start()
+    {
+
 	}
 
-	void Update(){
-		GetInput ();
+    void Awake()
+    {
+        playerAudio = GetComponent<AudioSource>();
+        currentBattery = startingBattery;
+    }
+
+    void Update()
+    {
+        if (camShot)
+            blinkImage.color = flashColour;
+        else
+            blinkImage.color = Color.Lerp(blinkImage.color, Color.clear, blinkSpeed * Time.deltaTime);
+
+        camShot = false;
+
+        GetInput();
 		PreparacaoFoto ();
 	}
 
@@ -51,12 +81,30 @@ public class Photograph : MonoBehaviour {
 
 	}
 
-	void GetInput(){
+	void GetInput()
+    {
 		if (!Input.GetMouseButton(0)) {
 			TirarFoto = false;
 		}
 		if (Input.GetMouseButtonUp (0)) {
 			TirarFoto = true;
-		}
+            TakeShot(amount);
+        }
 	}
+
+    public void TakeShot(int amount)
+    {
+        camShot = true;
+        currentBattery -= amount;
+        batterySlider.value = currentBattery;
+        playerAudio.Play();
+
+        if (currentBattery <= 0 && !isBatteryOver)
+            NoBattery();
+    }
+
+    void NoBattery()
+    {
+        isBatteryOver = true;
+    }
 }
