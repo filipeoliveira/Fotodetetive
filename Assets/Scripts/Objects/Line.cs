@@ -32,12 +32,17 @@ public class Line : MonoBehaviour {
 
 		ShowText ();
 
+		if (!GameObject.Find ("ScoreCounter").GetComponent<Score>().existeLinha(indiceFinal)) {
+			Destroy (transform.gameObject);
+		}
+
 		//PONTOS:
 		GameObject.Find ("ScoreCounter").GetComponent<Score>().addScore(indiceFinal);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
 		line.SetPosition (0, start.position);
 		line.SetPosition (1, target.position);
 

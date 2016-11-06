@@ -23,4 +23,10 @@ public class Score : MonoBehaviour {
 			textLines = (textFile.text.Split ('\n'));
 		}
 	}
+	public bool existeLinha(int indice){
+		if (int.Parse (textLines [indice]) == -1) {
+			return false;
+		}
+		return true;
+	}
 }
