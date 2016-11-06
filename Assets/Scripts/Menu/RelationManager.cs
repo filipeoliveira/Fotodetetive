@@ -65,7 +65,4 @@ public class RelationManager : MonoBehaviour {
 			relacaoFrames.SetActive (true);
 		}
 	}
-
-
-
 }

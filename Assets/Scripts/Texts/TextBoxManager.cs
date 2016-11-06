@@ -8,10 +8,10 @@ public class TextBoxManager : MonoBehaviour {
 
 	public Text theText;
 
-	public TextAsset textFile;
-	public string[] textLines;
+	public TextAsset textFile, textFile2;
+	public string[] textLines, textLines2;
 
-	public int currentLine;
+	public int currentLine, currentLine2;
 	public bool ativado = false;
 
 	private double tempoDiminuindo = 0;
@@ -22,6 +22,9 @@ public class TextBoxManager : MonoBehaviour {
 		if(textFile != null){
 			textLines = (textFile.text.Split ('\n'));
 		}
+		if(textFile2 != null){
+			textLines2 = (textFile2.text.Split ('\n'));
+		}
 
 	}
 
@@ -30,6 +33,7 @@ public class TextBoxManager : MonoBehaviour {
 		TextBoxActive ();
 
 		theText.text = textLines [currentLine];
+		theText.text = textLines2 [currentLine2];
 	}
 
 	void SumirTexto(){
