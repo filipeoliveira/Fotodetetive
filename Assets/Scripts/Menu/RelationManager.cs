@@ -14,26 +14,33 @@ public class RelationManager : MonoBehaviour {
 	void Update(){
 		ShineSelecionados ();
 		BotaoRelacionarFrames ();
+		UpdateSelecionados ();
 	}
 
 	public void AddOnSelecionados(GameObject objeto){
-		for (int i = 0; i < 2; i++) {
-			if (Selecionados [i] == null) {
-				Selecionados [i] = objeto;
-				return;
+		if (Selecionados [0] != null && Selecionados [1] != null) {
+			Selecionados [0] = SetNull (Selecionados [0]);
+			Selecionados [0] = objeto;
+			Selecionados = EmOrdem (Selecionados);
+		} else {
+			for (int i = 0; i < 2; i++) {
+				if (Selecionados [i] == null) {
+					Selecionados [i] = objeto;
+					break;
+				}
 			}
 		}
-		VoltaCor (Selecionados [0]);
-		Selecionados [0] = objeto;
-		Selecionados = EmOrdem (Selecionados);
+		if (CheckDeDuasTestemunhas ()) {
+			SetNullToAll ();
+			Selecionados [0] = objeto;
+		}
 		return;
 	}
 
 	public void UpdateSelecionados(){
 		for (int i = 0; i < 2; i++) {
 			if (Selecionados[i] != null && !Selecionados [i].GetComponent<Selectable> ().isSelected) {
-				VoltaCor (Selecionados [i]);
-				Selecionados [i] = null;
+				Selecionados[i] = SetNull(Selecionados[i]);
 			}
 		}
 		return;
@@ -72,8 +79,26 @@ public class RelationManager : MonoBehaviour {
 
 	public void SetNullToAll(){
 		for (int i = 0; i < 2; i++) {
-			VoltaCor (Selecionados [i]);
-			Selecionados [i] = null;
+			Selecionados [i] = SetNull (Selecionados [i]);
 		}
 	}
+	GameObject SetNull(GameObject Selecionado){
+		VoltaCor (Selecionado);
+		Selecionado.GetComponent<Selectable> ().isSelected = false;
+		Selecionado = null;
+		return Selecionado;
+	}
+
+	public bool CheckDeDuasTestemunhas(){
+		if (Selecionados [0] == null || Selecionados [1] == null) {
+			return false;
+		}
+		if (Selecionados [0].CompareTag ("Testemunha") && Selecionados [1].CompareTag ("Testemunha")) {
+			return true;
+
+		}
+		return false;
+
+	}
+
 }

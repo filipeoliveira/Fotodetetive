@@ -6,7 +6,6 @@ public class Testemunhas : MonoBehaviour{
 	public int indice;
 
 	void OnMouseDown(){
-		Debug.Log ("Oi");
 		transform.gameObject.GetComponent<Selectable> ().Select ();
 
 		transform.parent.GetComponent<RelationManager> ().UpdateSelecionados();
