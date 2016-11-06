@@ -41,6 +41,8 @@ public class ButtonManagerCaso1 : MonoBehaviour {
 		line.gameObject.GetComponent<Line> ().start = frames[0].transform;
 		line.gameObject.GetComponent<Line> ().target = frames[1].transform;
 
+		// essa é a função para adicionar pontos.
+		// coloque onde for conveniente
 		counter.GetComponent<Score> ().addScore (100);
 
 		relationManager.GetComponent<RelationManager> ().SetNullToAll ();
