@@ -21,10 +21,6 @@ public class ButtonManagerCaso1 : MonoBehaviour {
 		frames[0] = relationManager.GetComponent<RelationManager>().Selecionados[0];
 		frames[1] = relationManager.GetComponent<RelationManager>().Selecionados[1];
 
-		// Essa e a parte que especifica a linha a ser usada na relacao. Faltou tambem um condicional para testar se a linha e diferente de "nada", ja que ser for a relacao nao existe
-		int indice = 2;
-		GameObject.FindGameObjectWithTag ("TextManager").GetComponent<TextBoxManager> ().currentLine2 = indice;
-
 		pos1 = frames [0].transform.position;
 		pos2 = frames [1].transform.position;
 

@@ -6,7 +6,7 @@ public class Line : MonoBehaviour {
 	public Transform start;
 	public Transform target;
 	public GameObject bm;
-	public int indice = 2;
+	public int indiceFinal;
 
 	LineRenderer line;
 	CapsuleCollider capsule;
@@ -21,6 +21,12 @@ public class Line : MonoBehaviour {
 		bm = GameObject.FindGameObjectWithTag ("ButtonManager");
 		start = bm.GetComponent<ButtonManagerCaso1> ().frames[0].transform;
 		target = bm.GetComponent<ButtonManagerCaso1>().frames[1].transform;
+
+		int indiceStart = bm.GetComponent<ButtonManagerCaso1> ().frames [0].GetComponent<Frame>().indice - 1;
+		int indiceTarget = bm.GetComponent<ButtonManagerCaso1> ().frames[1].GetComponent<Frame>().indice - 1;
+		indiceFinal = (DetermineMenor(indiceStart,indiceTarget))*10 + DetermineMaior(indiceStart,indiceTarget) + 1;
+
+		ShowText ();
 	}
 	
 	// Update is called once per frame
@@ -34,6 +40,25 @@ public class Line : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
-		GameObject.FindGameObjectWithTag ("TextManager").GetComponent<TextBoxManager> ().newTxt (true, indice);
+		ShowText ();
+	}
+
+	int DetermineMenor(int a, int b){
+		if (a > b) {
+			return b;
+		} else {
+			return a;
+		}
+	}
+
+	int DetermineMaior(int a, int b){
+		if (a > b) {
+			return a;
+		} else {
+			return b;
+		}
+	}
+	void ShowText(){
+		GameObject.FindGameObjectWithTag ("TextManager").GetComponent<TextBoxManager> ().newTxt (true, indiceFinal);
 	}
 }

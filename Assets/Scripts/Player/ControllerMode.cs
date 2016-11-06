@@ -7,6 +7,7 @@ public class ControllerMode : MonoBehaviour {
 
 	void Update () {
 		Comando ();
+		SeMenuInvestigacao ();
 		MudaModo ();
 	}
 
@@ -23,6 +24,11 @@ public class ControllerMode : MonoBehaviour {
 		} else {
 			transform.GetChild (1).gameObject.SetActive(false);
 			transform.GetChild (0).gameObject.SetActive(true);
+		}
+	}
+	void SeMenuInvestigacao(){
+		if(GameObject.Find("Cenario").GetComponent<MenuInvestigativo>().ativado){
+			modoCamera = false;
 		}
 	}
 }
