@@ -69,12 +69,16 @@
     <Compile Include="Assets\Scripts\Cenarios\FrameManager.cs" />
     <Compile Include="Assets\Scripts\Cenarios\GerenciadoObjetos.cs" />
     <Compile Include="Assets\Scripts\Cenarios\ObjectManager.cs" />
+    <Compile Include="Assets\Scripts\Cenarios\Score.cs" />
     <Compile Include="Assets\Scripts\Menu\ButtonManager.cs" />
+    <Compile Include="Assets\Scripts\Menu\ButtonManagerGO.cs" />
+    <Compile Include="Assets\Scripts\Menu\ButtonManagerHistoriaC.cs" />
     <Compile Include="Assets\Scripts\Menu\FrameMenuSelecao.cs" />
     <Compile Include="Assets\Scripts\Menu\MenuInvestigativo.cs" />
     <Compile Include="Assets\Scripts\Menu\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Menu\RelationManager.cs" />
     <Compile Include="Assets\Scripts\Menu\ShowItens.cs" />
+    <Compile Include="Assets\Scripts\Menu\starCounter.cs" />
     <Compile Include="Assets\Scripts\Objects\FadeObjectInOut.cs" />
     <Compile Include="Assets\Scripts\Objects\Frame.cs" />
     <Compile Include="Assets\Scripts\Objects\Line.cs" />
@@ -87,10 +91,12 @@
     <Compile Include="Assets\Scripts\Player\Select.cs" />
     <Compile Include="Assets\Scripts\Player\Zoom.cs" />
     <Compile Include="Assets\Scripts\Texts\TextBoxManager.cs" />
+    <Compile Include="Assets\Scripts\Texts\timer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Text\conclusoes.txt" />
-    <None Include="Assets\Text\objetos.txt" />
+    <None Include="Assets\Text\final.txt" />
+    <None Include="Assets\Text\pontos.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
