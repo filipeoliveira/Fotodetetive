@@ -33,7 +33,7 @@ public class ButtonManagerCaso1 : MonoBehaviour {
 		SceneManager.LoadScene ("historiaConclusao");
 	}
 
-	void TaskOnClick(){
+	public void TaskOnClick(){
 		frames[0] = relationManager.GetComponent<RelationManager>().Selecionados[0];
 		frames[1] = relationManager.GetComponent<RelationManager>().Selecionados[1];
 
@@ -42,7 +42,7 @@ public class ButtonManagerCaso1 : MonoBehaviour {
 		InstanciaLinha ();
 
 	}
-	void InstanciaLinha(){
+	public void InstanciaLinha(){
 		//Instancia como filha de menuInvestigtivo, logo, só aparecerá quando este menu estiver ativo ~~Pedro
 		GameObject linha = Instantiate (line).gameObject;
 		linha.transform.parent = GameObject.Find ("menuInvestigativo").transform;
@@ -52,7 +52,7 @@ public class ButtonManagerCaso1 : MonoBehaviour {
 
 		relationManager.GetComponent<RelationManager> ().SetNullToAll ();
 	}
-	void TestemunhaTask(){
+	public void TestemunhaTask(){
 		int indiceFinal = 0;
 
 		testemunhas[0] = relationManager.GetComponent<RelationManager>().Selecionados[0];
@@ -63,14 +63,14 @@ public class ButtonManagerCaso1 : MonoBehaviour {
 		GameObject.FindGameObjectWithTag ("TextManager").GetComponent<TextBoxManager> ().newTxt (true, indiceFinal,true);
 	}
 
-	int DetermineTestemunha(GameObject[] testemunhas){
+	public int DetermineTestemunha(GameObject[] testemunhas){
 		if (testemunhas [0].CompareTag ("Testemunha")) {
 			return 0;
 		} else {
 			return 1;
 		}
 	}
-	int calculaIndice(GameObject[] vetor){
+	public int calculaIndice(GameObject[] vetor){
 		return (vetor [1 - DetermineTestemunha (vetor)].GetComponent<Frame> ().indice - 1) + 
 			(vetor [DetermineTestemunha (vetor)].GetComponent<Testemunhas> ().indice - 1) * 10;
 	}
