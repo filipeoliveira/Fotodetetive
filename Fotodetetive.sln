@@ -1,7 +1,7 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{F9ADAB50-35DD-A749-B15A-E431FB9DE8CB}") = "Fotodetetive", "Assembly-CSharp.csproj", "{8A754625-D0BA-827E-7B3C-4755599A60A9}"
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fotodetetive", "Fotodetetive.csproj", "{7C1B994F-997B-B1E7-33CC-94AC2895314C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +9,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8A754625-D0BA-827E-7B3C-4755599A60A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A754625-D0BA-827E-7B3C-4755599A60A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8A754625-D0BA-827E-7B3C-4755599A60A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8A754625-D0BA-827E-7B3C-4755599A60A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C1B994F-997B-B1E7-33CC-94AC2895314C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C1B994F-997B-B1E7-33CC-94AC2895314C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C1B994F-997B-B1E7-33CC-94AC2895314C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C1B994F-997B-B1E7-33CC-94AC2895314C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
